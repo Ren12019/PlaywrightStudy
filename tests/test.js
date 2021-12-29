@@ -17,7 +17,7 @@ const fs = require('fs');
     // 通常のページの場合は以下の通り
     // await page.goto('https://youtube.com/');
     // ローカルのファイルを指定する場合は以下のようにすると良い（puppeteerの解決法みたいだけど使える）
-    var contentHtml = fs.readFileSync('app/index.html', 'utf8');
+    var contentHtml = fs.readFileSync('public/index.html', 'utf8');
     await page.setContent(contentHtml);
     await page.screenshot({ path: `results/example-${browserType}.png` });
     await browser.close();

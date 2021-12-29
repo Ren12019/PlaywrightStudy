@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  mode: process.env.NODE_ENV || 'development',
   entry: {
     index: path.join(__dirname, 'app', 'index.js')
   },
@@ -12,5 +12,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({template: "./app/index.html"})
-  ]
+  ],
+  optimization: {
+    minimizer: [new TerserPlugin({
+      extractComments: false,
+    })],
+  }
 };
