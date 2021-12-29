@@ -10,5 +10,5 @@ $(function(){
         $("#answer").val(parseFloat($("#number1").val()) + parseFloat($("#number2").val()))
     })
 
-    hello();
+    // hello();
 })
