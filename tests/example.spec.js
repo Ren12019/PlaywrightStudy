@@ -5,7 +5,8 @@ const envConfig = require('../env.config.json');
 
 // 第一引数：テストのタイトル
 // 第二引数：テスト処理
-test('足し算機能の確認', async ({ page, browserName }) => {
+// UIの確認
+test('Confirm UI', async ({ page, browserName }) => {
   // ページ遷移
   await page.goto(envConfig.SiteUrl);
   // await page.goto('http://127.0.0.1:5500/public/index.html');
@@ -15,23 +16,74 @@ test('足し算機能の確認', async ({ page, browserName }) => {
   // タイトルの確認
   await expect(page).toHaveTitle(/Playwright/);
 
+  // h1 が "Calculate App" となっているか検証する
+  const h1Text = await page.innerText("h1");
+  expect(h1Text).toBe("Calculate App");
+
+  // 初期値の確認
+  const locatorNumber1 = page.locator('#number1');
+  await expect(locatorNumber1).toHaveValue('0');
+  const locatorNumber2 = page.locator('#number2');
+  await expect(locatorNumber2).toHaveValue('0');
+  await page.screenshot({ path: `results/ui/screenshot-${browserName}.png` });
+});
+
+// 足し算の確認
+test('Confirm Plus Function', async ({ page, browserName }) => {
+  // ページ遷移
+  await page.goto(envConfig.SiteUrl);
+
+  await page.selectOption('select#method-select', 'plus');
   await page.fill('#number1', '1');
   await page.fill('#number2', '1');
   await page.click('#btnCalculate');
   // 表示の確認
   const locator = page.locator('#answer');
   await expect(locator).toHaveValue('2');
-  await page.screenshot({ path: `results/screenshot-${browserName}.png` });
-  
+  await page.screenshot({ path: `results/plus/screenshot-${browserName}.png` });
+});
 
-//   // Expect an attribute "to be strictly equal" to the value.
-//   // 表示の確認
-//   await expect(page.locator('text=Get Started').first()).toHaveAttribute('href', '/docs/intro');
+// 引き算の確認
+test('Confirm Minus Function', async ({ page, browserName }) => {
+  // ページ遷移
+  await page.goto(envConfig.SiteUrl);
 
-//   // Expect an element "to be visible".
-//   await expect(page.locator('text=Learn more').first()).toBeVisible();
+  await page.selectOption('select#method-select', 'minus');
+  await page.fill('#number1', '1');
+  await page.fill('#number2', '1');
+  await page.click('#btnCalculate');
+  // 表示の確認
+  const locator = page.locator('#answer');
+  await expect(locator).toHaveValue('0');
+  await page.screenshot({ path: `results/minus/screenshot-${browserName}.png` });
+});
 
-//   await page.click('text=Get Started');
-//   // Expect some text to be visible on the page.
-//   await expect(page.locator('text=Introduction').first()).toBeVisible();
+// 掛け算の確認
+test('Confirm Multiplication Function', async ({ page, browserName }) => {
+  // ページ遷移
+  await page.goto(envConfig.SiteUrl);
+
+  await page.selectOption('select#method-select', 'multiplication');
+  await page.fill('#number1', '6');
+  await page.fill('#number2', '3');
+  await page.click('#btnCalculate');
+  // 表示の確認
+  const locator = page.locator('#answer');
+  await expect(locator).toHaveValue('18');
+  await page.screenshot({ path: `results/multiplication/screenshot-${browserName}.png` });
+});
+
+// 割り算の確認
+test('Confirm Division Function', async ({ page, browserName }) => {
+  // ページ遷移
+  await page.goto(envConfig.SiteUrl);
+
+  await page.selectOption('select#method-select', 'division');
+  await page.fill('#number1', '6');
+  await page.fill('#number2', '3');
+  await page.click('#btnCalculate');
+  // 表示の確認
+  const locator = page.locator('#answer');
+  await expect(locator).toHaveValue('2');
+  await page.screenshot({ path: `results/division/screenshot-${browserName}.png` });
 });
