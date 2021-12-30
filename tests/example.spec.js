@@ -5,7 +5,7 @@ const envConfig = require('../env.config.json');
 
 // 第一引数：テストのタイトル
 // 第二引数：テスト処理
-test('足し算機能の確認', async ({ page }) => {
+test('足し算機能の確認', async ({ page, browserName }) => {
   // ページ遷移
   await page.goto(envConfig.SiteUrl);
   // await page.goto('http://127.0.0.1:5500/public/index.html');
@@ -21,7 +21,8 @@ test('足し算機能の確認', async ({ page }) => {
   // 表示の確認
   const locator = page.locator('#answer');
   await expect(locator).toHaveValue('2');
-  await page.screenshot({ path: 'results/screenshot.png' });
+  await page.screenshot({ path: `results/screenshot-${browserName}.png` });
+  
 
 //   // Expect an attribute "to be strictly equal" to the value.
 //   // 表示の確認

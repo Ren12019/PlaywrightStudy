@@ -23,7 +23,7 @@ const config = {
       use: { ...devices['Desktop Safari'] },
     },
     {
-      name: 'Microsoft Edge',
+      name: 'edge',
       use: {
         // Supported Microsoft Edge channels are: msedge, msedge-beta, msedge-dev, msedge-canary
         channel: 'msedge',

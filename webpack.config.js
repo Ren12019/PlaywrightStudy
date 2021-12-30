@@ -17,5 +17,8 @@ module.exports = {
     minimizer: [new TerserPlugin({
       extractComments: false,
     })],
-  }
+  },
+  devServer: {
+		open: true
+	}
 };
