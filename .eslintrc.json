@@ -13,6 +13,41 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi": [2, "always"]
+        "array-bracket-spacing": ["warn", "never"],           // 配列内の括弧の間隔
+        "arrow-body-style": ["warn", "as-needed"],            // 矢印関数本体の周りの波括弧の使用
+        "arrow-parens": ["warn", "as-needed"],            // アロー関数の括弧の一貫した使用
+        "arrow-spacing": "warn",                 // アロー関数の矢印の後か前かにスペースを要求するか
+        "brace-style": ["warn", "1tbs"],              // ブレーススタイルを適用
+        "camelcase": "warn",                 // キャメルケース
+        "comma-spacing": ["warn", {"after": true}],         // カンマ前後のスペース
+        "dot-notation": "warn",                  // ドット表記スタイルの使用の奨励
+        "eqeqeq": ["warn", "smart"],              // 型安全でない等価演算子を排除
+        "indent": ["warn", 2, {                 // インデント
+            "SwitchCase": 1,                     // ネストの深さ
+            "FunctionDeclaration": {"parameters": 1},            // 関数宣言のパラメータのインデントレベル
+            "MemberExpression": 1,                   // 複数行のプロパティチェーンのインデントレベル
+            "CallExpression": {"arguments": 1}           // 関数呼び出し式の引数のインデントレベル
+        }],
+        "key-spacing": ["warn", {"beforeColon": false, "afterColon": true, "mode": "minimum"}], // オブジェクトリテラル・プロパティのキーと値の間の間隔を強制
+        "keyword-spacing": "warn",                   // キーワードとキーワードの間隔
+        "no-console": "off",                 // consoleを許可しない
+        "no-empty": "off",                       // 空のブロックステートメントを許可しない
+        "no-multi-spaces": "warn",                   // キーワード間の2つ以上のスペースを許可しない
+        "no-redeclare": "off",                   // 複数回同じ変数を宣言許可しない
+        "no-restricted-globals": ["warn", "Promise"],     // 指定したグローバル変数を利用しない
+        "no-trailing-spaces": "warn",                // 行の末尾に空白を入れない
+        "no-undef": "error",                 // 宣言していない変数を使用しない
+        "no-unused-vars": ["warn", {"args": "none"}],     // 利用していない変数を警告
+        "one-var": ["warn", "never"],             // ブロックスコープ内では1度の宣言で必要な変数宣言を行う
+        "padded-blocks": ["warn", "never"],               // ブロック内のパディングを強制
+        "object-curly-spacing": ["warn", "never"],            // 1行でオブジェクト定義する際、波括弧の前後に空白を入れない
+        "quotes": ["warn", "single"],             // クォート
+        "react/prop-types": "off",                   // propsの値に対してPropTypesを指定していない場合に警告
+        "react/jsx-no-bind": "off",                  // jsx内でのbindを禁止する
+        "semi": ["warn", "always"],                   // ASIのセミコロンの使用を許可するか否か
+        "space-before-blocks": ["warn", "always"],            // ブロック前のスペースを許可しないかするか否か
+        "space-before-function-paren": ["warn", "never"],     // 関数の括弧の前にスペースを許可するか否か
+        "space-in-parens": ["warn", "never"],         // 括弧内のスペースを許可するか
+        "strict": ["warn", "global"]              // use strict を記述すること
     }
 }
