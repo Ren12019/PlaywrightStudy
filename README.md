@@ -3,6 +3,9 @@
 「Playwright」
 を学習するためのリポジトリである。
 
+<開発手順>
+クローンしたら、まずnpm installを実行。
+
 ＜実行手順＞
 ・開発中
 npm run start
